@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Javascript Repo Template</title>
+    <title>Soccer Team Generator</title>
     <meta charset="utf-8">
-    <meta name="description" content="">
+    <meta name="description" content="Generate fair soccer teams based on player skill levels">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -18,8 +18,53 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <h1>My new repo template for javascript</h1>
+    
+    <div class="container">
+      <header>
+        <h1>⚽ Soccer Team Generator</h1>
+        <p>Add players and generate fair teams for pickup games!</p>
+      </header>
 
+      <main>
+        <!-- Add Player Section -->
+        <section class="add-player-section">
+          <h2>Add Players</h2>
+          <form id="player-form" class="player-form">
+            <div class="form-group">
+              <label for="player-name">Player Name:</label>
+              <input type="text" id="player-name" name="playerName" required placeholder="Enter player name">
+            </div>
+            <div class="form-group">
+              <label for="skill-level">Skill Level:</label>
+              <select id="skill-level" name="skillLevel" required>
+                <option value="">Select skill level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="baller">Baller</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Player</button>
+          </form>
+        </section>
+
+        <!-- Players List Section -->
+        <section class="players-section">
+          <h2>Players (<span id="player-count">0</span>)</h2>
+          <div id="players-list" class="players-list">
+            <p class="empty-state">No players added yet. Add some players to get started!</p>
+          </div>
+          <button id="generate-teams-btn" class="btn btn-success" disabled>Generate Teams</button>
+          <button id="clear-all-btn" class="btn btn-secondary">Clear All Players</button>
+        </section>
+
+        <!-- Teams Display Section -->
+        <section id="teams-section" class="teams-section" style="display: none;">
+          <h2>Generated Teams</h2>
+          <div id="teams-container" class="teams-container"></div>
+          <button id="regenerate-btn" class="btn btn-primary">Regenerate Teams</button>
+        </section>
+      </main>
+    </div>
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -28,7 +73,6 @@
     <![endif]-->
     <!-- endbuild -->
 
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -36,7 +80,7 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/team-generator.js" type="text/javascript"></script>
     <!-- endbuild -->
   </body>
 </html>
